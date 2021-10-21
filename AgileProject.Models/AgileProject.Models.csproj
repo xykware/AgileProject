@@ -86,6 +86,8 @@
   <ItemGroup>
     <Compile Include="GameCreate.cs" />
     <Compile Include="GameDetail.cs" />
+    <Compile Include="GameEdit.cs" />
+    <Compile Include="GameListItem.cs" />
     <Compile Include="GameSystemCreate.cs" />
     <Compile Include="GenreCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
