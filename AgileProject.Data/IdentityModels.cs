@@ -34,8 +34,8 @@ namespace AgileProject.Data
         }
 
         public DbSet<Game> Games { get; set; }
-        //public DbSet<GameSystem> GameSystems { get; set; }
-        //public DbSet<Genre> Genres { get; set; }
+        public DbSet<GameSystem> GameSystems { get; set; }
+        public DbSet<Genre> Genres { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
