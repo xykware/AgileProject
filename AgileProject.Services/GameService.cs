@@ -94,7 +94,7 @@ namespace AgileProject.Services
             }
         }
 
-        public bool DeleteNoteByTitle(string title)
+        public bool DeleteGameByTitle(string title)
         {
             using (var ctx = new ApplicationDbContext())
             {
