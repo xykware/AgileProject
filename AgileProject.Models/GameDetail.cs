@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace AgileProject.Models
 {
-    class GameDetail
+    public class GameDetail
     {
+        public int GameId { get; set; }
         [Required]
         [MinLength(1, ErrorMessage = "Please enter a title.")]
         public string Title { get; set; }

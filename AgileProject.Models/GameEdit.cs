@@ -16,6 +16,5 @@ namespace AgileProject.Models
         public DateTimeOffset CreatedUtc { get; set; }
         [Display(Name = "Date Modified")]
         public DateTimeOffset? ModifiedUtc { get; set; }
-
     }
 }
