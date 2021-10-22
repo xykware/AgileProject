@@ -2,7 +2,7 @@
 
 bros-before-code - cohort 105
 
-Planning and Agile Material:
+Planning, Agile, and Testing Material:
 
 Our Git - https://github.com/xykware/AgileProject
 Our Trello - https://trello.com/b/IdlsKPIh/agile-stuff ,
