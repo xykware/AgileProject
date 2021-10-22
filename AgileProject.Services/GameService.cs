@@ -17,6 +17,7 @@ namespace AgileProject.Services
             _userId = userId;
         }
 
+        // C - POST Game - [Needs Conformed]
         public bool EnterGameIntoDatabase(GameCreate game)
         {
             var newGame = new Game()
@@ -33,6 +34,7 @@ namespace AgileProject.Services
             }
         }
 
+        // R - GET All Game
         public IEnumerable<GameListItem> GetGames()
         {
             using (var ctx = new ApplicationDbContext())
@@ -55,6 +57,7 @@ namespace AgileProject.Services
 
         }
 
+        // R - GET One By Title
         public GameDetail GetGameByTitle(string title)
         {
             using(var ctx = new ApplicationDbContext())
@@ -76,6 +79,29 @@ namespace AgileProject.Services
             }
         }
 
+        // R - GET One By GameId - [Needs Conformed]
+        public GameDetail GetGameByGameId(string title)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var game =
+                    ctx
+                    .Games
+                    .Where(g => g.OwnerId == _userId)
+                    .Single(g => g.Title == title);
+                return
+                    new GameDetail
+                    {
+                        GameId = game.GameId,
+                        Title = game.Title,
+                        Comment = game.Comment,
+                        CreatedUtc = game.CreatedUtc,
+                        ModifiedUtc = game.ModifiedUtc
+                    };
+            }
+        }
+
+        // U - PUT One By GameId
         public bool UpdateGame(GameEdit game)
         {
             using(var ctx = new ApplicationDbContext())
@@ -94,6 +120,7 @@ namespace AgileProject.Services
             }
         }
 
+        // D - DELETE One By GameId
         public bool DeleteGame(int id)
         {
             using (var ctx = new ApplicationDbContext())

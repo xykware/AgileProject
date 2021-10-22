@@ -12,6 +12,26 @@ namespace AgileProject.WebAPI.Controllers
 {
     public class GameController : ApiController
     {
+
+        // C - POST Game
+        [HttpPost]
+        public IHttpActionResult Post(GameCreate game)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var service = CreateGameService();
+
+            if (!service.EnterGameIntoDatabase(game))
+            {
+                return InternalServerError();
+            }
+            return Ok();
+        }
+
+        // R - GET ALL
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -20,6 +40,7 @@ namespace AgileProject.WebAPI.Controllers
             return Ok(games);
         }
 
+        // R- GET One By Title
         [HttpGet]
         public IHttpActionResult GetGameByTitle(string title)
         {
@@ -28,23 +49,16 @@ namespace AgileProject.WebAPI.Controllers
             return Ok(game);
         }
 
-        [HttpPost]
-        public IHttpActionResult Post(GameCreate game)
+        // R - GET One By GameId
+        [HttpGet]
+        public IHttpActionResult GetGameByGameId(string title)
         {
-            if(!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var service = CreateGameService();
-
-            if(!service.EnterGameIntoDatabase(game))
-            {
-                return InternalServerError();
-            }
-            return Ok();
+            GameService gameService = CreateGameService();
+            var game = gameService.GetGameByTitle(title);
+            return Ok(game);
         }
 
+        // U - PUT One By GameId
         [HttpPut]
         public IHttpActionResult Put(GameEdit game)
         {
@@ -62,6 +76,7 @@ namespace AgileProject.WebAPI.Controllers
             return Ok();
         }
 
+        // D - Delete One By GameId
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
