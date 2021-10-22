@@ -76,7 +76,7 @@ namespace AgileProject.Services
             }
         }
 
-        public bool UpdateGameByTitle(GameEdit game)
+        public bool UpdateGame(GameEdit game)
         {
             using(var ctx = new ApplicationDbContext())
             {
@@ -84,7 +84,7 @@ namespace AgileProject.Services
                     ctx
                     .Games
                     .Where(e => e.OwnerId == _userId)
-                    .Single(e => e.Title == game.Title);
+                    .Single(e => e.GameId == game.GameId);
 
                 entity.Title = game.Title;
                 entity.Comment = game.Comment;
@@ -94,7 +94,7 @@ namespace AgileProject.Services
             }
         }
 
-        public bool DeleteGameByTitle(string title)
+        public bool DeleteGame(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -102,7 +102,7 @@ namespace AgileProject.Services
                     ctx
                     .Games
                     .Where(e => e.OwnerId == _userId)
-                    .Single(e => e.Title == title);
+                    .Single(e => e.GameId == id);
                 ctx.Games.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
