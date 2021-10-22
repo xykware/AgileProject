@@ -1,6 +1,6 @@
 # AgileProject
 
-bros-before-code - chort 105
+bros-before-code - cohort 105
 
 Planning and Agile Material:
 
